@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load customfilters %}
+
+{% load customtags %}
+
+{%  block content %}
+
+{% for i in "123"|make_list %}
+    <div class="{% cycle 'row1' 'row2' %}">
+        {% cycle 'row1' 'row2' %}
+        {{i}}
+
+        {{forloop.counter0}}
+
+    </div>
+{% endfor %}
+
+</br>
+
+{% to_list 5 4 3 'abc' as my_list%}
+{% for i in my_list %}
+{{i}}
+{% endfor %}
+
+<h1>Templates Testing {{ "test" | uppercase }} </h1>
+<p></p>
+<h1>Custom context </h1>
+{{name}}
+<script>
+    $('p').text('{{"test" | uppercase }}');
+    console.log('{{"test" | uppercase }}');
+    
+</script>
+{% endblock %}
+
